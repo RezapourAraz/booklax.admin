@@ -1,9 +1,16 @@
 import React from "react";
 
+// hooks
+import { useAppSelector } from "../../hooks/reduxHooks";
+
 // Mui
-import { Avatar, Box, Grid, IconButton, Typography } from "@mui/material";
+import { Avatar, Grid, Typography } from "@mui/material";
+import { displayGreeting } from "../../helper/greeting";
 
 const MainHeader = () => {
+  // selector
+  const { user } = useAppSelector((state) => state.auth);
+
   return (
     <Grid
       container
@@ -20,8 +27,10 @@ const MainHeader = () => {
       </Grid>
 
       <Grid>
-        <Grid>
-          <Avatar />
+        <Grid sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          {displayGreeting()}
+          <Typography>{user.username}</Typography>
+          <Avatar src={user.profile} alt={user.username} />
         </Grid>
       </Grid>
     </Grid>
