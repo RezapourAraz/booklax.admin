@@ -1,16 +1,28 @@
 import React from "react";
 
 // Mui
-import { Box, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Grid, IconButton, Typography } from "@mui/material";
 
 const MainHeader = () => {
   return (
-    <Grid sx={{ height: 80, p: 2 }}>
+    <Grid
+      container
+      sx={{
+        height: 70,
+        p: 2,
+        boxShadow: 1,
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
       <Grid>
-        <Typography variant="h5">بوکلاکس</Typography>
+        <Typography variant="h2">بوکلاکس</Typography>
       </Grid>
+
       <Grid>
-        <Typography></Typography>
+        <Grid>
+          <Avatar />
+        </Grid>
       </Grid>
     </Grid>
   );
