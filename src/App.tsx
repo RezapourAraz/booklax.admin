@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 // Components
 import MainLayouts from "./layouts/Main.layouts";
 import MainSidebar from "./components/sidebars/Main.sidebars";
-import Blogs from "./pages/Blogs";
+import Blogs from "./pages/blogs/Blogs";
 import Dashboard from "./pages/Dashboard";
 import { useEffect } from "react";
 import { useAppSelector } from "./hooks/reduxHooks";
