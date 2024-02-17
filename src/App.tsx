@@ -35,7 +35,7 @@ function App() {
         <Box sx={{ p: 2 }}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/*" element={<Blogs />} />
           </Routes>
         </Box>
       </MainLayouts>

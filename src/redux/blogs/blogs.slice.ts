@@ -22,7 +22,13 @@ const blogSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+
+    getBlogById: builder.query({
+      query: ({ id }) => ({
+        url: `/admin/blogs/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllBlogsQuery } = blogSlice;
+export const { useGetAllBlogsQuery, useGetBlogByIdQuery } = blogSlice;

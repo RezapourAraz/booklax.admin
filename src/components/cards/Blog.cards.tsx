@@ -1,10 +1,18 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BlogCard = ({ blog }: any) => {
+  // hooks
+  const navigate = useNavigate();
+
+  // state
+  const slug = `${blog.id}-${blog.title}`.replaceAll(" ", "-");
+
   return (
     <Grid
       sx={{ m: 2, bgcolor: "common.white", cursor: "pointer", borderRadius: 1 }}
+      onClick={() => navigate(slug)}
     >
       <Box sx={{ height: 250 }}>
         <img
