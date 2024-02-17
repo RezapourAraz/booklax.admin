@@ -20,6 +20,7 @@ const MainHeader = () => {
         boxShadow: 1,
         alignItems: "center",
         justifyContent: "space-between",
+        zIndex: 100,
       }}
     >
       <Grid>

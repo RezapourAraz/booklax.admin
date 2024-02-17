@@ -21,7 +21,11 @@ const MainLayouts: FC<MainLayoutsProps> = ({ children, sidebar }) => {
         <Grid
           item
           md={10}
-          sx={{ overflowY: "auto", height: "calc(100vh - 70px)" }}
+          sx={{
+            overflowY: "auto",
+            height: "calc(100vh - 70px)",
+            bgcolor: "primary.light",
+          }}
         >
           {children}
         </Grid>
