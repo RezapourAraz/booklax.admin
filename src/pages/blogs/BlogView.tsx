@@ -2,8 +2,14 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 // Mui
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
+
+// redux
 import { useGetBlogByIdQuery } from "../../redux/blogs/blogs.slice";
+
+// icons
+import { FaCheck } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
 const BlogView = () => {
   // Hooks
@@ -24,8 +30,26 @@ const BlogView = () => {
   } else {
     return (
       <Grid>
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            position: "sticky",
+            top: 0,
+            bgcolor: "primary.light",
+            p: 2,
+          }}
+        >
           <Typography variant="h2">نمایش بلاگ</Typography>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <IconButton sx={{ color: "success.main" }}>
+              <FaCheck />
+            </IconButton>
+            <IconButton sx={{ color: "error.main" }}>
+              <IoClose />
+            </IconButton>
+          </Box>
         </Box>
         <Grid>
           <Box
