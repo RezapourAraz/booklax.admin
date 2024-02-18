@@ -28,7 +28,39 @@ const blogSlice = apiSlice.injectEndpoints({
         url: `/admin/blogs/${id}`,
       }),
     }),
+    acceptOrReject: builder.mutation({
+      query: ({ isVerified, id }) => ({
+        url: `/admin/blogs/verify/${id}`,
+        method: "PATCH",
+        body: { isVerified },
+      }),
+    }),
+    createBlog: builder.mutation({
+      query: ({ body, file }) => {
+        const formData = new FormData();
+
+        for (const key in body) {
+          formData.append(key, body[key]);
+        }
+
+        if (file) {
+          formData.append("file", file);
+        }
+
+        return {
+          url: `admin/blogs/verify/${body.id}`,
+          method: "patch",
+          body: formData,
+          formData: true,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetAllBlogsQuery, useGetBlogByIdQuery } = blogSlice;
+export const {
+  useGetAllBlogsQuery,
+  useGetBlogByIdQuery,
+  useAcceptOrRejectMutation,
+  useCreateBlogMutation,
+} = blogSlice;

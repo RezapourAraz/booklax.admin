@@ -5,7 +5,10 @@ import { useLocation } from "react-router-dom";
 import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
 
 // redux
-import { useGetBlogByIdQuery } from "../../redux/blogs/blogs.slice";
+import {
+  useAcceptOrRejectMutation,
+  useGetBlogByIdQuery,
+} from "../../redux/blogs/blogs.slice";
 
 // icons
 import { FaCheck } from "react-icons/fa6";
@@ -14,12 +17,23 @@ import { IoClose } from "react-icons/io5";
 const BlogView = () => {
   // Hooks
   const location = useLocation();
+
+  const [acceptOrReject, is] = useAcceptOrRejectMutation();
+
   // url
   const id = decodeURIComponent(location.pathname).split("/")[2].split("-")[0];
 
   const { data, isLoading, isSuccess } = useGetBlogByIdQuery({ id });
 
   const blog = isSuccess && data.data;
+
+  const handleAcceptOrRejectBlog = (arg: boolean) => {
+    if (arg) {
+      acceptOrReject({ isVerified: true, id: blog.id });
+    } else {
+      acceptOrReject({ isVerified: false, id: blog.id });
+    }
+  };
 
   if (isLoading) {
     return (
@@ -43,10 +57,16 @@ const BlogView = () => {
         >
           <Typography variant="h2">نمایش بلاگ</Typography>
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton sx={{ color: "success.main" }}>
+            <IconButton
+              sx={{ color: "success.main" }}
+              onClick={() => handleAcceptOrRejectBlog(true)}
+            >
               <FaCheck />
             </IconButton>
-            <IconButton sx={{ color: "error.main" }}>
+            <IconButton
+              sx={{ color: "error.main" }}
+              onClick={() => handleAcceptOrRejectBlog(false)}
+            >
               <IoClose />
             </IconButton>
           </Box>
